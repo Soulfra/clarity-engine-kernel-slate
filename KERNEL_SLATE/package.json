@@ -1,0 +1,13 @@
+{
+  "name": "clarity-engine-kernel-slate",
+  "version": "1.0.0",
+  "description": "Minimal, E2E-tested, self-healing kernel for CLARITY_ENGINE. Spiral-out ready.",
+  "main": "scripts/core/backup-orchestrator.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+} 
