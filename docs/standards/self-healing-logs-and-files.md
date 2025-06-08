@@ -9,7 +9,7 @@ status: living
 
 # Self-Healing Logs & File Creation Standard
 
-> See also: `shared/utils/ensureFileAndDir.js`, `tests/core/backup-buildup.e2e.test.js`
+> See also: `../shared/utils/ensureFileAndDir.js`, `tests/core/backup-buildup.e2e.test.js`
 
 ## Rationale
 - Prevents errors from missing files or directories
