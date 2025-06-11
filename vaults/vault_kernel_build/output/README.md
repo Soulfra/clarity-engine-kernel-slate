@@ -1,0 +1,4 @@
+# Soulfra Vault Kernel
+
+I want to build GitHub for ideas. Every idea should be a vault. People get equity for dropping QR codes. Agents are forkable. Credits are redeemable through Stripe. This conversation is the seed. Build the system from here.
+
