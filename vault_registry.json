@@ -1,1 +1,10 @@
+[
+  {
+    "vault_id": "vault_0002_growth_ideas",
+    "seed": "growth_ideas.txt",
+    "timestamp": "2025-06-11T14:20:00Z",
+    "origin": "qr_user_001",
+    "loop_status": "pending"
+  }
+]
 []
