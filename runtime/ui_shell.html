@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Soulfra Runtime Shell</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    #status { margin-top: 1em; }
+  </style>
+</head>
+<body>
+  <h1>Soulfra Runtime Shell</h1>
+  <button id="startBtn">Start Vault</button>
+  <pre id="status"></pre>
+  <script>
+    document.getElementById('startBtn').onclick = async () => {
+      const res = await fetch('/api/start', { method: 'POST' });
+      const data = await res.json();
+      document.getElementById('status').textContent = JSON.stringify(data, null, 2);
+    };
+  </script>
+</body>
+</html>

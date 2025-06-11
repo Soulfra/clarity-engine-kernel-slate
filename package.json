@@ -4,7 +4,8 @@
   "description": "Minimal, E2E-tested, self-healing kernel for CLARITY_ENGINE. Spiral-out ready.",
   "main": "scripts/core/backup-orchestrator.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "runtime": "node runtime/start.js"
   },
   "dependencies": {},
   "devDependencies": {

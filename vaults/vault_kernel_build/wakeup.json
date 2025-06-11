@@ -1,0 +1,7 @@
+{
+  "remind_after_days": 7,
+  "auto_export": true,
+  "agent_to_run": "reflection_agent_001",
+  "opt_out": false,
+  "last_run": null
+}
