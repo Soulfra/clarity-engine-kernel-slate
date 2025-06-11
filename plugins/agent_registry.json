@@ -1,0 +1,9 @@
+{
+  "writerbot": {
+    "file": "agents/writerbot.js",
+    "model": "gpt-4",
+    "credits_per_use": 10,
+    "created_by": "qr_user_003",
+    "trust_score": 4.8
+  }
+}
