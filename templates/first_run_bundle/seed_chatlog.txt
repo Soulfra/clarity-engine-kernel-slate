@@ -1,0 +1,1 @@
+Welcome to Soulfra! This seed chat bootstraps your first vault.
