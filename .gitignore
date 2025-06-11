@@ -2,6 +2,9 @@ node_modules/
 backups/
 temp/
 logs/
+vaults/*
+!vaults/**/
+!vaults/**/wakeup.json
 vaults/
 !vaults/
 !vaults/vault_0001_soulfra_kernel/
