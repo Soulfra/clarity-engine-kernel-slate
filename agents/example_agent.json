@@ -1,4 +1,8 @@
 {
+  "name": "example_agent",
+  "kernel_fingerprint": "e7b82283009921f95afcd4f8c0841969be7069e489fbae7ff8fe0cb348557e6f",
+  "origin_vault": "vault_0001_soulfra_kernel",
+  "requires_llm_access": true
   "id": "example_agent",
   "description": "Basic $1 agent",
   "priceUSD": 1,
