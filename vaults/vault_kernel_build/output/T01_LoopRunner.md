@@ -1,1 +1,3 @@
-Hello world. This is a sample chat log for the vault kernel build.
+# Task T01 - LoopRunner
+
+Create the LoopRunner module that orchestrates document generation and logging.

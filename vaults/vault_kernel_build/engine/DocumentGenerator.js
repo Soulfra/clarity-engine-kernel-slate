@@ -1,29 +1,40 @@
-// DocumentGenerator - converts chat logs into markdown vault files
+// DocumentGenerator.js - generates documentation from a seed chat log
 const fs = require('fs');
 const path = require('path');
-const ensureFileAndDir = require('../KERNEL_SLATE/shared/utils/ensureFileAndDir');
+const ensureFileAndDir = require('../../../KERNEL_SLATE/shared/utils/ensureFileAndDir');
 
-function parseChat(chatText) {
-  const lines = chatText.split(/\r?\n/).filter(Boolean);
-  const systemIntent = lines[0] || '';
-  return { systemIntent, fullText: chatText };
+function parseIntent(chatText) {
+  const lines = chatText.trim().split(/\r?\n/).filter(Boolean);
+  const intent = lines[0] || '';
+  const rest = lines.slice(1).join(' ');
+  return { intent, rest, full: chatText };
+}
+
+function writeFile(filePath, content) {
+  ensureFileAndDir(filePath);
+  fs.writeFileSync(filePath, content);
 }
 
 function generateDocs(parsed, outDir) {
   const files = [];
-  ensureFileAndDir(path.join(outDir, 'SystemIntent.md'));
-  fs.writeFileSync(path.join(outDir, 'SystemIntent.md'), `# System Intent\n\n${parsed.systemIntent}\n`);
-  files.push(path.join(outDir, 'SystemIntent.md'));
+  const readme = `# Soulfra Vault Kernel\n\n${parsed.intent}\n\n${parsed.rest}`;
+  const systemIntent = `# System Intent\n\n${parsed.full}`;
+  const task = '# Task T01 - LoopRunner\n\nCreate the LoopRunner module that orchestrates document generation and logging.';
 
-  ensureFileAndDir(path.join(outDir, 'T01_LoopRunner.md'));
-  fs.writeFileSync(path.join(outDir, 'T01_LoopRunner.md'), parsed.fullText);
-  files.push(path.join(outDir, 'T01_LoopRunner.md'));
+  const readmePath = path.join(outDir, 'README.md');
+  writeFile(readmePath, readme);
+  files.push(readmePath);
 
-  ensureFileAndDir(path.join(outDir, 'README.md'));
-  fs.writeFileSync(path.join(outDir, 'README.md'), '# Vault Build\nGenerated from chat log.');
-  files.push(path.join(outDir, 'README.md'));
+  const sysIntentPath = path.join(outDir, 'SystemIntent.md');
+  writeFile(sysIntentPath, systemIntent);
+  files.push(sysIntentPath);
+
+  const taskPath = path.join(outDir, 'T01_LoopRunner.md');
+  writeFile(taskPath, task);
+  files.push(taskPath);
 
   return files;
 }
-
 module.exports = { parseChat, generateDocs };
+=======
+module.exports = { parseIntent, generateDocs };
