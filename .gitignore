@@ -2,5 +2,8 @@ node_modules/
 backups/
 temp/
 logs/
-vaults/
+vaults/*
+!vaults/vault_kernel_build/
+!vaults/vault_kernel_build/contributors.json
+!vaults/vault_kernel_build/swarm_state.json
 loop_log.json
