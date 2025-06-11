@@ -3,4 +3,7 @@ backups/
 temp/
 logs/
 vaults/
+!vaults/
+!vaults/vault_0001_soulfra_kernel/
+!vaults/vault_0001_soulfra_kernel/seal_log.json
 loop_log.json
