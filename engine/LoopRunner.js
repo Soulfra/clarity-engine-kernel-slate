@@ -5,10 +5,13 @@ const crypto = require('crypto');
 const { parseChat, generateDocs } = require('./DocumentGenerator');
 const ensureFileAndDir = require('../KERNEL_SLATE/shared/utils/ensureFileAndDir');
 const { execSync } = require('child_process');
+const CreditManager = require('./CreditManager');
 
 const INPUT_FILE = process.env.INPUT_FILE || path.resolve('input/seed_chatlog.txt');
 const VAULT_DIR = path.resolve('vaults/vault_kernel_build');
 const LOOP_LOG = path.resolve('loop_log.json');
+const USER_ID = process.env.LOOP_USER || 'qr_user_001';
+const LOOP_COST = 50;
 
 function loadLoopLog() {
   if (!fs.existsSync(LOOP_LOG)) {
@@ -35,11 +38,15 @@ function generateLoopId() {
 async function run() {
   const loopId = generateLoopId();
   const timestamp = new Date().toISOString();
-  const logEntry = { id: loopId, timestamp, origin: INPUT_FILE, files: [], success: false };
+  const logEntry = { id: loopId, timestamp, origin: INPUT_FILE, files: [], success: false, user: USER_ID };
   const log = loadLoopLog();
+
+  const cm = new CreditManager(USER_ID);
 
   try {
     if (!fs.existsSync(INPUT_FILE)) throw new Error('Input file missing');
+    if (!cm.hasCredits(LOOP_COST)) throw new Error('Insufficient credits');
+    cm.deduct(LOOP_COST, logEntry);
     const chat = fs.readFileSync(INPUT_FILE, 'utf-8');
     const parsed = parseChat(chat);
     const outDir = VAULT_DIR;

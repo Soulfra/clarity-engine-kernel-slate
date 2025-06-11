@@ -3,4 +3,6 @@ backups/
 temp/
 logs/
 vaults/
+!vaults/vault_0002_growth_ideas/
+!vaults/vault_0002_growth_ideas/**
 loop_log.json
