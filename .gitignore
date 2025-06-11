@@ -1,4 +1,6 @@
 node_modules/
 backups/
 temp/
-logs/ 
+logs/
+vaults/
+loop_log.json
