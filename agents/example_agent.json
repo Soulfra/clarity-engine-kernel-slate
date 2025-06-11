@@ -1,0 +1,7 @@
+{
+  "id": "example_agent",
+  "description": "Basic $1 agent",
+  "priceUSD": 1,
+  "equitySplit": { "soulfra": 0.6, "contributor": 0.4 },
+  "permissions": ["read", "write"]
+}
