@@ -7,8 +7,8 @@ const ensureFileAndDir = require('../KERNEL_SLATE/shared/utils/ensureFileAndDir'
 const { execSync } = require('child_process');
 
 const INPUT_FILE = process.env.INPUT_FILE || path.resolve('input/seed_chatlog.txt');
-const VAULT_DIR = path.resolve('vaults/vault_kernel_build');
-const LOOP_LOG = path.resolve('loop_log.json');
+const VAULT_DIR = process.env.VAULT_DIR || path.resolve('vaults/vault_kernel_build');
+const LOOP_LOG = process.env.LOOP_LOG || path.resolve('loop_log.json');
 
 function loadLoopLog() {
   if (!fs.existsSync(LOOP_LOG)) {

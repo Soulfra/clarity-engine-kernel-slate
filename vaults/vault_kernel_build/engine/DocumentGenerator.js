@@ -35,5 +35,6 @@ function generateDocs(parsed, outDir) {
 
   return files;
 }
-
+module.exports = { parseChat, generateDocs };
+=======
 module.exports = { parseIntent, generateDocs };
