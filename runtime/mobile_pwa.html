@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loopcast PWA</title>
+<style>
+body { font-family: sans-serif; text-align:center; padding:20px; }
+.btn { display:block; margin:10px auto; padding:15px 20px; background:#333; color:#fff; border:none; border-radius:6px; width:90%; max-width:300px; }
+</style>
+</head>
+<body>
+<h1>Loopcast Launcher</h1>
+<button class="btn" onclick="scanLoop()">Scan Loop</button>
+<button class="btn" onclick="dropVibe()">Drop a Vibe</button>
+<button class="btn" onclick="remixLast()">Remix Last Vault</button>
+<button class="btn" onclick="earn()">Earn by Scanning</button>
+<script>
+function scanLoop(){ alert('Scan Loop not implemented'); }
+function dropVibe(){ alert('Drop a Vibe not implemented'); }
+function remixLast(){ alert('Remix Last Vault not implemented'); }
+function earn(){ alert('Earn by Scanning not implemented'); }
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(console.error);
+}
+</script>
+</body>
+</html>
