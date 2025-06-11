@@ -1,0 +1,23 @@
+{
+  "gpt-4": {
+    "cost_per_token": 0.1,
+    "cooldown_ms": 1000,
+    "latency_rating": 1,
+    "eligible": true,
+    "trust_required": 3
+  },
+  "claude": {
+    "cost_per_token": 0.05,
+    "cooldown_ms": 500,
+    "latency_rating": 2,
+    "eligible": true,
+    "trust_required": 2
+  },
+  "local": {
+    "cost_per_call": 1,
+    "cooldown_ms": 100,
+    "latency_rating": 3,
+    "eligible": true,
+    "trust_required": 0
+  }
+}
