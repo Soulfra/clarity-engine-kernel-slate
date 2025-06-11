@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Referral Leaderboard</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 4px; text-align: left; }
+    .top { background-color: gold; }
+  </style>
+</head>
+<body>
+  <h1>Referral Leaderboard</h1>
+  <pre id="data"></pre>
+  <table id="leaderboard">
+    <thead>
+      <tr><th>Referrer</th><th>Total Earned</th><th>Payout This Month</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+<script>
+fetch('leaderboard.json').then(r => r.json()).then(data => {
+  const tbody = document.querySelector('#leaderboard tbody');
+  data.forEach((row, i) => {
+    const tr = document.createElement('tr');
+    if (i < 3) tr.classList.add('top');
+    tr.innerHTML = `<td>${row.referrer_id}</td><td>${row.totalEarned}</td><td>${row.payoutThisMonth}</td>`;
+    tbody.appendChild(tr);
+  });
+});
+</script>
+</body>
+</html>

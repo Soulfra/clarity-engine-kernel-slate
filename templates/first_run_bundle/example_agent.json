@@ -1,0 +1,5 @@
+{
+  "name": "ExampleAgent",
+  "description": "A starter agent that echoes user input.",
+  "version": "1.0.0"
+}

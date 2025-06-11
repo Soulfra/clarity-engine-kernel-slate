@@ -5,4 +5,12 @@ logs/
 vaults/*
 !vaults/**/
 !vaults/**/wakeup.json
+vaults/
+!vaults/
+!vaults/vault_0001_soulfra_kernel/
+!vaults/vault_0001_soulfra_kernel/seal_log.json
+vaults/*
+!vaults/vault_kernel_build/
+!vaults/vault_kernel_build/**
 loop_log.json
+!vaults/vault_kernel_build/output/loop_log.json

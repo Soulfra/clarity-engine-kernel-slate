@@ -1,0 +1,17 @@
+{
+  "vaults": [
+    { "vault_id": "vault_0003_referral_system", "parent": null },
+    { "vault_id": "vault_0006_rewards_ideas", "parent": "vault_0003_referral_system" },
+    { "vault_id": "vault_0008_identity_reputation", "parent": "vault_0003_referral_system" }
+  ]
+}
+[
+  {
+    "vault_id": "vault_0002_growth_ideas",
+    "seed": "growth_ideas.txt",
+    "timestamp": "2025-06-11T14:20:00Z",
+    "origin": "qr_user_001",
+    "loop_status": "pending"
+  }
+]
+[]
