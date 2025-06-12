@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Soulfra Leaderboard</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    table { border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 0.5em; }
+  </style>
+</head>
+<body>
+  <h1>Contributor Leaderboard</h1>
+  <table id="board">
+    <tr><th>User</th><th>Vaults</th><th>Credits</th><th>Remix Score</th></tr>
+  </table>
+<script>
+async function load() {
+  try {
+    const data = await fetch('../explorer/contributors.json').then(r => r.json());
+    const table = document.getElementById('board');
+    data.sort((a,b) => (b.credits_earned||0) - (a.credits_earned||0));
+    data.forEach(c => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${c.user}</td><td>${c.vaults_submitted}</td>` +
+        `<td>${c.credits_earned}</td><td>${c.remix_score}</td>`;
+      table.appendChild(tr);
+    });
+  } catch(e){
+    document.getElementById('board').insertAdjacentHTML('afterend', '<p>Failed to load leaderboard</p>');
+  }
+}
+load();
+</script>
+</body>
+</html>

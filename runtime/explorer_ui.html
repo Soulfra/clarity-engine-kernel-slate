@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Soulfra Vault Explorer</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    .vault { border: 1px solid #ccc; padding: 1em; margin-bottom: 1em; }
+    .vault h2 { margin-top: 0; }
+  </style>
+</head>
+<body>
+  <h1>Soulfra Vault Explorer</h1>
+  <div id="vaults">Loading...</div>
+<script>
+async function load() {
+  try {
+    const feed = await fetch('../explorer/feed_registry.json').then(r => r.json());
+    const tree = await fetch('../explorer/remix_tree.json').then(r => r.json());
+    const container = document.getElementById('vaults');
+    container.innerHTML = '';
+    feed.forEach(v => {
+      const div = document.createElement('div');
+      div.className = 'vault';
+      const children = (tree[v.vault_id] && tree[v.vault_id].children) || [];
+      div.innerHTML = `<h2>${v.vault_id}</h2>` +
+        `<p>${v.summary || ''}</p>` +
+        `<p>Creator: ${v.creator || 'N/A'} | Trust: ${v.trust_score}</p>` +
+        `<p>Remixes: ${v.remix_count} | Exports: ${v.export_count}</p>` +
+        `<p>Children: ${children.join(', ')}</p>`;
+      container.appendChild(div);
+    });
+  } catch (e) {
+    document.getElementById('vaults').textContent = 'Failed to load feed.';
+  }
+}
+load();
+</script>
+</body>
+</html>
