@@ -1,0 +1,10 @@
+{
+  "credits_earned": 420,
+  "credits_spent": 180,
+  "vaults": ["vault_0001_test", "vault_0002_demo"],
+  "agents": ["agent_welcome_bot"],
+  "badges": ["starter", "loop_runner"],
+  "remixes": 14,
+  "exports": 8,
+  "rank": "Loop Builder Tier 2"
+}

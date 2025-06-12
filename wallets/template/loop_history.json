@@ -1,0 +1,5 @@
+[
+  {"loop_id":"loop_001","type":"remix","date":"2025-06-01","credits":20,"exported":true},
+  {"loop_id":"loop_002","type":"export","date":"2025-06-02","credits":10,"exported":true},
+  {"loop_id":"loop_003","type":"build","date":"2025-06-05","credits":30,"exported":false}
+]
