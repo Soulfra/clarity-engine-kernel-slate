@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Creator Dashboard</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    .section { border: 1px solid #ccc; padding: 1em; margin-bottom: 1em; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 0.5em; }
+  </style>
+</head>
+<body>
+  <h1>Creator Dashboard</h1>
+  <div id="summary" class="section">Loading...</div>
+  <div id="history" class="section"></div>
+  <script>
+    async function load() {
+      try {
+        const params = new URLSearchParams(location.search);
+        const user = params.get('user') || 'template';
+        const dash = await fetch(`../wallets/${user}/dashboard.json`).then(r => r.json());
+        const history = await fetch(`../wallets/${user}/loop_history.json`).then(r => r.json());
+        const summary = document.getElementById('summary');
+        summary.innerHTML = `<h2>User: ${user}</h2>` +
+          `<p>Credits Earned: ${dash.credits_earned} | Credits Spent: ${dash.credits_spent}</p>` +
+          `<p>Vaults: ${dash.vaults.join(', ')}</p>` +
+          `<p>Agents: ${dash.agents.join(', ')}</p>` +
+          `<p>Badges: ${dash.badges.join(', ')}</p>` +
+          `<p>Remixes: ${dash.remixes} | Exports: ${dash.exports}</p>` +
+          `<p>Rank: ${dash.rank}</p>`;
+        const historyDiv = document.getElementById('history');
+        historyDiv.innerHTML = '<h2>Loop History</h2>';
+        const table = document.createElement('table');
+        table.innerHTML = '<tr><th>ID</th><th>Type</th><th>Date</th><th>Credits</th><th>Exported</th></tr>';
+        history.forEach(h => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${h.loop_id}</td><td>${h.type}</td><td>${h.date}</td><td>${h.credits}</td><td>${h.exported}</td>`;
+          table.appendChild(tr);
+        });
+        historyDiv.appendChild(table);
+      } catch (e) {
+        document.getElementById('summary').textContent = 'Failed to load dashboard.';
+      }
+    }
+    load();
+  </script>
+</body>
+</html>
