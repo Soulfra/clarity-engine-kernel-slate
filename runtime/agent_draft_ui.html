@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Agent Draft UI</title>
+</head>
+<body>
+  <h1>Agent Draft Preview</h1>
+  <div id="info"></div>
+  <script>
+  async function load() {
+    const res = await fetch('../plugins/agent_drafts.json');
+    const drafts = await res.json();
+    const el = document.getElementById('info');
+    el.textContent = JSON.stringify(drafts, null, 2);
+  }
+  load();
+  </script>
+</body>
+</html>
