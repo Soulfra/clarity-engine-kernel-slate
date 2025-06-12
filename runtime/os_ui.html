@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soulfra OS</title>
+<style>
+body { font-family:sans-serif; margin:20px; }
+#chat { width:100%; height:200px; }
+#files { border:2px dashed #ccc; padding:20px; margin:10px 0; }
+</style>
+</head>
+<body>
+<h1>Soulfra OS Runtime</h1>
+<div>
+  <textarea id="chat" placeholder="type a command"></textarea>
+  <br/>
+  <button onclick="send()">Send</button>
+</div>
+<div id="files" ondrop="drop(event)" ondragover="event.preventDefault()">Drop files here</div>
+<select id="agents"></select>
+<button onclick="exportVault()">Export Vault</button>
+<script>
+async function loadAgents(){
+  const res = await fetch('../plugins/agent_registry.json').catch(()=>null);
+  if(!res) return;
+  const reg = await res.json();
+  const sel = document.getElementById('agents');
+  for(const a of Object.keys(reg)){
+    const opt = document.createElement('option');
+    opt.value = a; opt.textContent = a; sel.appendChild(opt);
+  }
+}
+function drop(ev){ ev.preventDefault(); const file=ev.dataTransfer.files[0]; if(file){ alert('file received: '+file.name); }}
+function send(){ alert('Command: '+document.getElementById('chat').value); }
+function exportVault(){ fetch('/api/start',{method:'POST'}).then(r=>r.json()).then(d=>alert('Vault exported: '+d.vaultPath)); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('sw.js').catch(console.error); }
+loadAgents();
+</script>
+</body>
+</html>

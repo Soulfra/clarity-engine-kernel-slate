@@ -5,7 +5,8 @@
   "main": "scripts/core/backup-orchestrator.js",
   "scripts": {
     "test": "jest",
-    "runtime": "node runtime/start.js"
+    "runtime": "node runtime/start.js",
+    "os": "node runtime/soulfra_os.js"
   },
   "dependencies": {
     "qrcode": "^1.5.1"
